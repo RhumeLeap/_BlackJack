@@ -1,5 +1,7 @@
-package io.turntabl;
+package io.turntabl.card;
 
+import io.turntabl.card.Card;
+import io.turntabl.card.DeckOfCard;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 

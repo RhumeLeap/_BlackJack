@@ -1,4 +1,6 @@
-package io.turntabl;
+package io.turntabl.card;
+
+import io.turntabl.card.Card;
 
 /**
  * @author Rhume Disi
