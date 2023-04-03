@@ -21,7 +21,6 @@ public class DeckOfCard {
         for (String suit : suits) {
             for (String value : values) {
                 allCards[counter++] = new Card(suit, value);
-                //counter++;
             }
         }
     }
