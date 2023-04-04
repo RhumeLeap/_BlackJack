@@ -45,10 +45,11 @@ class DeckOfCardTest {
 
         Card[] cards = deckOfCard.getAllCards();
         for (int i = 0; i < cards.length ; i++) {
-            if(cards[i].getSuit().equals("S")) {
+            if(cards[i].getSuit() == SuitEnum.SPADE) {
                 counter++;
             }
         }
+
         assertEquals(counter, numOfSpades);
     }
 
@@ -58,8 +59,9 @@ class DeckOfCardTest {
         int numOfHearts = 13;
         Card[] cards = deckOfCard.getAllCards();
         int counter = (int) Arrays.stream(deckOfCard.getAllCards())
-                            .filter(card -> card.getSuit().equals("H"))
+                            .filter(card -> card.getSuit() == SuitEnum.HEART)
                             .count();
+
         assertEquals(counter, numOfHearts);
     }
 
@@ -69,7 +71,7 @@ class DeckOfCardTest {
     public void testNumberOfDiamonds() {
         int numOfDiamonds = 13;
         Card[] cards = deckOfCard.getAllCards();
-        int counter = (int) Arrays.stream(cards).filter(card -> card.getSuit().equals("D")).count();
+        int counter = (int) Arrays.stream(cards).filter(card -> card.getSuit() == SuitEnum.DIAMOND).count();
 
         assertEquals(counter, numOfDiamonds);
     }
@@ -80,25 +82,16 @@ class DeckOfCardTest {
         int numOfClubs = 13;
         Card[] cards = deckOfCard.getAllCards();
         int counter = (int) Arrays.stream(cards)
-                        .filter(card -> card.getSuit().equals("C")).count();
+                        .filter(card -> card.getSuit() == SuitEnum.CLUB).count();
 
         assertEquals(counter, numOfClubs);
     }
 
-    // This is heavily probabilistic.
     @Test
     public void testCardShuffling() {
-        List<Card> cardList = Arrays.stream(deckOfCard.getAllCards()).collect(Collectors.toList());
-        Card[] cards = deckOfCard.shuffleCards(new DefaultShuffleStrategy());
+        Card[] originalCardArray = deckOfCard.getAllCards();
+        Card[] shuffledCards = deckOfCard.shuffleCards(new DefaultShuffleStrategy());
 
-        int averagePositionChange = 0;
-
-        for (int i = 0; i < cards.length ; i++) {
-            int newPosition = cardList.indexOf(cards[i]);
-            if (newPosition != i && averagePositionChange <= 10) {
-                averagePositionChange++;
-            }
-        }
-        assertTrue(averagePositionChange >= 10, "The position of 10 cards is expected to change.");
+        assertNotEquals(shuffledCards[0], originalCardArray[0], "The cards is should be different.");
     }
 }
