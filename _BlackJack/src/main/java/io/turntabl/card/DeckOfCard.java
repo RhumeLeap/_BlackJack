@@ -2,9 +2,10 @@ package io.turntabl.card;
 
 import io.turntabl.shuffle.ShufflingStrategy;
 
+import java.util.Arrays;
+
 /**
  * @author Rhume Disi
- * {@code @date} April 3, 2023
  */
 public class DeckOfCard {
 
@@ -33,5 +34,10 @@ public class DeckOfCard {
 
     public Card[] shuffleCards(ShufflingStrategy strategy) {
         return strategy.shuffle(allCards);
+    }
+
+    @Override
+    public String toString() {
+        return "DeckOfCard{ allCards = " + Arrays.toString(allCards) + '}';
     }
 }
