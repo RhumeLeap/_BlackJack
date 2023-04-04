@@ -1,6 +1,6 @@
 package io.turntabl.card;
 
-import io.turntabl.card.Card;
+import io.turntabl.shuffle.ShufflingStrategy;
 
 /**
  * @author Rhume Disi
@@ -29,5 +29,9 @@ public class DeckOfCard {
 
     public Card[] getAllCards() {
         return this.allCards;
+    }
+
+    public Card[] shuffleCards(ShufflingStrategy strategy) {
+        return strategy.shuffle(allCards);
     }
 }
