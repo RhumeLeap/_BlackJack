@@ -17,12 +17,12 @@ public class DeckOfCard {
     }
 
     private void initializeAllCards() {
-        String[] suits = {"H", "D", "C", "S"};
-        String[] values = {"2", "3", "4", "5", "6", "7", "8", "9", "10", "J", "Q", "K", "A"};
+        SuitEnum[] suits = SuitEnum.values();
+        ValueEnum[] values = ValueEnum.values();
         int counter = 0;
 
-        for (String suit : suits) {
-            for (String value : values) {
+        for (SuitEnum suit : suits) {
+            for (ValueEnum value : values) {
                 allCards[counter++] = new Card(suit, value);
             }
         }

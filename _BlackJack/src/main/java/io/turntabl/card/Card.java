@@ -5,26 +5,24 @@ package io.turntabl.card;
  */
 public final class Card {
 
-    private final String suit;
-    private final String value;
+    private final SuitEnum suit;
+    private final ValueEnum value;
 
-    public Card(String suit, String value) {
+    public Card(SuitEnum suit, ValueEnum value) {
         this.suit = suit;
         this.value = value;
     }
 
-    public String getSuit() {
+    public SuitEnum getSuit() {
         return suit;
     }
 
-    public String getValue() {
+    public ValueEnum getValue() {
         return value;
     }
 
     public int getIntegerValueOfCard() {
-        if (value.equals("A")) return 11;
-        if (value.equals("K") || value.equals("Q") || value.equals("J")) return 10;
-        else return Integer.getInteger(getValue());
+        return value.getIntegerValue();
     }
 
     @Override
