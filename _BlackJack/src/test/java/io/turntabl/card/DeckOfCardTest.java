@@ -25,9 +25,9 @@ class DeckOfCardTest {
 
     @Test
     void testNumberOfInitializedCards() {
-        assertEquals(deckOfCard.getAllCards().length, 52);
+        assertEquals(deckOfCard.getAllCards().length, 52, "Number of cards in BlackJack is 52");
     }
-
+//Check if the all cards were initialized
     @Test
     public void testDeckOfCardsInitialized() {
         boolean containsNull = Arrays.stream(deckOfCard.getAllCards()).collect(Collectors.toList())
