@@ -22,7 +22,7 @@ public final class Card {
     }
 
     public int getIntegerValueOfCard() {
-        if (value.equals("A")) return 1;
+        if (value.equals("A")) return 11;
         if (value.equals("K") || value.equals("Q") || value.equals("J")) return 10;
         else return Integer.getInteger(getValue());
     }
