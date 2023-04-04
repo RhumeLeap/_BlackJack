@@ -2,7 +2,6 @@ package io.turntabl.card;
 
 /**
  * @author Rhume Disi
- * {@code @date} April 3, 2023
  */
 public final class Card {
 
@@ -20,6 +19,12 @@ public final class Card {
 
     public String getValue() {
         return value;
+    }
+
+    public int getIntegerValueOfCard() {
+        if (value.equals("A")) return 1;
+        if (value.equals("K") || value.equals("Q") || value.equals("J")) return 10;
+        else return Integer.getInteger(getValue());
     }
 
     @Override
