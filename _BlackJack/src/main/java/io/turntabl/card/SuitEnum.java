@@ -1,5 +1,8 @@
 package io.turntabl.card;
 
+/**
+ * @author Rhume & Michael.
+ */
 public enum SuitEnum {
     SPADE("S"),
     DIAMOND("D"),
@@ -10,5 +13,14 @@ public enum SuitEnum {
 
     SuitEnum(String symbol) {
         suitSymbol = symbol;
+    }
+
+    public String getSuitSymbol() {
+        return suitSymbol;
+    }
+
+    @Override
+    public String toString() {
+        return "SuitEnum { suitSymbol = " + suitSymbol + '}';
     }
 }
