@@ -44,10 +44,10 @@ public class Player {
     }
 
     /** Total value of all cards in a player's hand. */
-    public int getTotalValueOfCards() {
+    public int getTotalValueOfCardsInHand() {
         int totalValue = 0;
         for (Card eachCard : handOfCards) {
-            totalValue += eachCard.getIntegerValueOfCard();
+            totalValue += eachCard.getValue().getIntegerValue();
         }
         return totalValue;
     }
@@ -68,7 +68,7 @@ public class Player {
 
     @Override
     public String toString() {
-        return "Player { name = " + name + ", handOfCards=" + handOfCards +
+        return "Player { name = " + name + ", player's cards = " + handOfCards +
                 ", gameStrategy = " + gameStrategy + " }";
     }
 }
