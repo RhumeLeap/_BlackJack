@@ -3,6 +3,8 @@ package io.turntabl.shuffle;
 import io.turntabl.card.Card;
 
 import java.util.Arrays;
+import java.util.Collections;
+import java.util.List;
 import java.util.Random;
 
 public class DefaultShuffleStrategy implements ShufflingStrategy {
@@ -26,5 +28,12 @@ public class DefaultShuffleStrategy implements ShufflingStrategy {
         Card temp = cards[position1];
         cards[position1] = cards[position2];
         cards[position2] = temp;
+    }
+
+    public Card[] shuffle2(Card[] cards) {
+        Card[] anotherCardArray = cards.clone();
+        List<Card> cardList = Arrays.asList(anotherCardArray);
+        Collections.shuffle(cardList);
+        return cardList.toArray(anotherCardArray);
     }
 }
