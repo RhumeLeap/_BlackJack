@@ -2,10 +2,12 @@ package io.turntabl.card;
 
 import io.turntabl.card.Card;
 import io.turntabl.card.DeckOfCard;
+import io.turntabl.shuffle.DefaultShuffleStrategy;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import java.util.Arrays;
+import java.util.List;
 import java.util.stream.Collectors;
 
 import static org.junit.jupiter.api.Assertions.*;
@@ -25,7 +27,7 @@ class DeckOfCardTest {
 
     @Test
     void testNumberOfInitializedCards() {
-        assertEquals(deckOfCard.getAllCards().length, 52);
+        assertEquals(deckOfCard.getAllCards().length, 52, "Number of cards must be 52.");
     }
 
     @Test
@@ -83,4 +85,20 @@ class DeckOfCardTest {
         assertEquals(counter, numOfClubs);
     }
 
+    // This is heavily probabilistic.
+    @Test
+    public void testCardShuffling() {
+        List<Card> cardList = Arrays.stream(deckOfCard.getAllCards()).collect(Collectors.toList());
+        Card[] cards = deckOfCard.shuffleCards(new DefaultShuffleStrategy());
+
+        int averagePositionChange = 0;
+
+        for (int i = 0; i < cards.length ; i++) {
+            int newPosition = cardList.indexOf(cards[i]);
+            if (newPosition != i && averagePositionChange <= 10) {
+                averagePositionChange++;
+            }
+        }
+        assertTrue(averagePositionChange >= 10, "The position of 10 cards is expected to change.");
+    }
 }
